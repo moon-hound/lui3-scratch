@@ -22,6 +22,10 @@ One short page per word the guide uses. Every page links new words here.
 - [[pf]]: pf (packet filter)
 - [[pull-request]]: pull request
 - [[test-vm]]: Test VM
+- [[colima-lima]]: Colima and Lima
+- [[loopback]]: loopback
+- [[snapshot]]: snapshot (APFS snapshot)
+- [[watchdog]]: watchdog (startup job)
 
 ## How it connects
 - part_of [[index]]
