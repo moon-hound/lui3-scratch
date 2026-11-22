@@ -47,13 +47,14 @@ flowchart TD
 ### Exact details (for agents)
 | What | Value | Source |
 |---|---|---|
-| Runs on | Mac Studio `lui-mac.local` (192.168.1.101) | progress file |
+| Runs on | Mac Studio `lui-mac.local` (192.168.1.101) | host name: log #1 to #3; address: `CLAUDE.md` |
 | Accounts | `builder` (UID 502, no admin) writes; root owns every workspace | log #88, #113 |
 | Workspaces | `/Library/Lui3/work/<name>/` (root-owned); stand-in `/Library/Lui3/work/c7-standin` | #113 |
 | Lock script | `/Library/Lui3/bin/lui3-lock-workspace <name> <profile>` (root only); profiles in `/Library/Lui3/profiles/` (`drill.txt` today) | `c7/install.sh`, #113 |
-| Install record | `/var/db/lui3-c7-installed.txt` | #113 |
+| Install record | `/var/db/lui3-c7-installed.txt`; installed fingerprints (sha256) lock script `3999da0c…`, profile `6a37e39a…` (full values in log #113), to spot tampering | #113 |
+| Git trap | Git refuses the root-owned workspace unless it is given `safe.directory` for it; the launcher passes it, nothing else should | #113 |
 | Health check | on the Studio as `lui`, from `~/lui3-stage0/c7`: `sudo sh check.sh` (green; good = 0 FAIL, last 81/0). STOP label: `sudo`. Never `red` outside a planned drill | #113 |
-| Undo | `c7/uninstall.sh` (STOP: deleting) | progress file |
+| Undo | on the Studio: `sudo sh ~/lui3-stage0/c7/uninstall.sh` (STOP: `sudo`, deleting) | progress file |
 
 - Workspaces are root-owned under `/Library/Lui3/work`; the builder writes only in its profile's folders (in the drill profile: `src/` and `.git/`) through ACLs, so every locked path of record row 17.2 is locked by default (DOC, log #112, #113).
 - Lock script `/Library/Lui3/bin/lui3-lock-workspace` and `profiles/drill.txt` are root-owned; install record `/var/db/lui3-c7-installed.txt` (DOC, #113).

@@ -49,10 +49,10 @@ flowchart LR
 | What | Value | Source |
 |---|---|---|
 | Runs on | GitHub, repos `moon-hound/lui3` (real) and `moon-hound/lui3-scratch` (drills); both private, plan GitHub Pro | Part A check O1, #47 |
-| Accounts | owner `moon-hound` (Jax); agent `spacedog-lu` (collaborator; its token: scope `repo`, has an expiry, reaches 2 repos, no `workflow` scope) | #51, #56 |
-| Rule on `main` | classic branch protection rule, id 86016372: pull request required, 1 approval, stale approvals dismissed, code owner review, required check `gate` from GitHub Actions only, no direct push | #47, #48, click steps Screen 3 |
+| Accounts | owner `moon-hound` (Jax); agent `spacedog-lu` (collaborator; its token: classic, scope `repo`, reaches 2 repos, no `workflow` scope, **expires 2026-11-25 05:32 UTC**: any drill run after that needs a new token) | #51, #56 |
+| Rule on `main` | classic branch protection rule, id 86016372: pull request required, 1 approval, stale approvals dismissed, code owner review, approval of the most recent push, branches up to date, required check `gate` pinned to GitHub Actions (app 15368), no bypassing, force pushes and deletions off, no direct push. The scratch repo's rule id was not recorded | #47, #48, click steps Screen 3 |
 | Required check | job `gate` (in `ci.yml` on `lui3`; workflow display name NOT CHECKED) | #47, progress file |
-| Health check | `drills/run-part-b-drills.sh` and `drills/run-part-b-attacker-drills.sh` (Jax runs them; they need the agent's token: a planned step) | Part B check |
+| Health check | `drills/run-part-b-drills.sh` and `drills/run-part-b-attacker-drills.sh`, run by Jax on the laptop with the agent's token (a planned step, no `sudo`). Run in `scratch` mode first; `lui3` mode opens and closes drill pull requests on the real repo | Part B check, #57 |
 | Undo | change the rule back on **Settings > Branches** (Jax, by hand) | click steps |
 
 - Locks proven, each by a drill that was refused (DOC, Jax's pasted output):
