@@ -26,5 +26,5 @@ The official version of the project's code on GitHub. Nothing reaches it except 
 ### Exact details (for agents)
 | What | Value | Source |
 |---|---|---|
-| Repo | `moon-hound/lui3` (private) | Part A check O1 |
+| Repo | `moon-hound/lui3` (private) | `lui3-stage-0-part-a-check-2026-11-17.md` item O1 |
 | Protection | classic branch protection rule id 86016372 | log #47 |

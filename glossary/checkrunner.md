@@ -28,4 +28,4 @@ A separate user account on the Mac Studio with no administrator rights and no ne
 |---|---|---|
 | Account | `checkrunner`, UID 503, group staff (20), not an admin, home folder mode 700 | log #88 |
 | Network | none of its own; the C8 pf rule lets it reach only its VM's port 41022 | log #120, #122 |
-| Owns | the test VM | C8 |
+| Owns | the test VM | `lui3-part-c-c8-test-vm-2026-11-20.md` |

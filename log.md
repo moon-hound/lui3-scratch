@@ -31,6 +31,7 @@ Append only. One line per change: date, page, what changed, why (command-log row
 | 2026-11-22 | all content pages, [[README]] | Same last section with the table first on every content page (glossary and troubleshooting added); checker enforces the position | log #183 |
 | 2026-11-22 | all pages, [[README]] | Rules audit: `AGENTS.md` added as the one rules file; stronger checker (order, Mermaid, STOP, sources, labels, log, covers_hash); every page stamped | log #184 |
 | 2026-11-22 | [[README]] | Guide gate live: Git hook refuses a guide commit with problems; rules file, checker, template, hook and git config locked | log #186 |
+| 2026-11-22 | [[snapshot]], [[main-branch]], [[checkrunner]], [[part-b-github-locks]] | Sources made exact (file names) for the stricter checker | log #190 |
 
 ## How it connects
 - part_of [[index]]

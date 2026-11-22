@@ -8,7 +8,7 @@ covers: []
 covers_hash: null
 verified_on: null
 verified_by: null
-sources: [CLAUDE.md rule 7]
+sources: [CLAUDE.md]
 -->
 
 # snapshot (APFS snapshot)

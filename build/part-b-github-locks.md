@@ -56,7 +56,7 @@ flowchart LR
 | Rule on `main` | classic branch protection rule, id 86016372: pull request required, 1 approval, stale approvals dismissed, code owner review, approval of the most recent push, branches up to date, required check `gate` pinned to GitHub Actions (app 15368), no bypassing, force pushes and deletions off, no direct push. The scratch repo's rule id was not recorded | #47, #48, click steps Screen 3 |
 | Required check | job `gate` (in `ci.yml` on `lui3`; workflow display name NOT CHECKED) | #47, progress file |
 | Health check | `drills/run-part-b-drills.sh` and `drills/run-part-b-attacker-drills.sh`, run by Jax on the laptop with the agent's token (a planned step, no `sudo`). Run in `scratch` mode first; `lui3` mode opens and closes drill pull requests on the real repo | Part B check, #57 |
-| Undo | change the rule back on **Settings > Branches** (Jax, by hand) | click steps |
+| Undo | change the rule back on **Settings > Branches** (Jax, by hand) | `lui3-part-b-click-steps-2026-11-17.md` |
 
 ### Technical facts
 
