@@ -22,6 +22,7 @@ Append only. One line per change: date, page, what changed, why (command-log row
 | 2026-11-22 | all pages | Page details moved into a hidden comment so viewers show the title, not the details | log #176 |
 | 2026-11-22 | [[c7-locked-paths]], [[test-vm-will-not-start]], [[c8-test-vm]] | Second review fixes; C8 picture redrawn as a Mermaid diagram (sample) | log #177 |
 | 2026-11-22 | [[README]], [[part-b-github-locks]], [[c7-locked-paths]], [[test-vm-will-not-start]], template | All pictures redrawn as Mermaid diagrams (Jax: "looks good" on the C8 sample) | log #178 |
+| 2026-11-22 | [[c8-test-vm]], [[c7-locked-paths]], [[part-b-github-locks]], template | "Exact details (for agents)" table added; checker now requires it on build pages | log #179 |
 
 ## How it connects
 - part_of [[index]]

@@ -46,6 +46,22 @@ flowchart LR
 - part_of [[index]]
 
 ## Technical facts
+### Exact details (for agents)
+| What | Value | Source |
+|---|---|---|
+| Runs on | Mac Studio `lui-mac.local` (192.168.1.101) | progress file |
+| Accounts | VM owned by `checkrunner` (UID 503, no admin, no network of its own); startup job and watchdog run as root | log #88, #120, #139 |
+| Startup jobs (launchd) | `lu.spacedog.lui3.pf-vm` (loads the firewall anchor at boot); `lu.spacedog.lui3.vm` (starts and watches the VM) | `c8/*.plist`, #123, #139 |
+| Installed files | `/Library/Lui3/c8/` (root-owned; `vm-boot.sh`, `common.sh`, pins) | `c8/boot-install.sh`, #141 |
+| Firewall | pf anchor `com.apple/lui3-vm`; checkrunner may only reach `127.0.0.1:41022` (the VM's ssh port); outgoing pings dropped Mac-wide | `c8/lui3-vm.pf`, #122 to #137 |
+| VM settings | `override.yaml` v4 in checkrunner's Colima folder; `colima.yaml` pinned by its values | `c8/override.yaml`, #145 |
+| Logs | watchdog: `/var/log/lui3-vm.log`; Colima output and tool errors: `/var/log/lui3-vm-tools.log` | `c8/vm-boot.sh` |
+| Versions | Colima 0.10.3, Lima 2.3.0 (locked in `c5/versions.env`) | `c5/versions.env` |
+| Health check | on the Studio as `lui`, from `~/lui3-stage0/c8`: `sudo sh check.sh` (green; good = 0 FAIL, last 79/0/0); after a restart `sudo sh check.sh boot` (last 83/0/0). STOP label: `sudo`. Never `red` outside a planned drill | #146, #147 |
+| Start after a fix | `sudo launchctl kickstart -k system/lu.spacedog.lui3.vm` (STOP: `sudo`, launchd). Never `colima start` by hand | `c8/vm-boot.sh` |
+| Re-install after a change | `boot-uninstall.sh` then `boot-install.sh` (both STOP) | progress file, C8 run order |
+| Undo | `boot-uninstall.sh`, `uninstall.sh`, `pf-uninstall.sh` (all STOP: deleting, launchd, firewall) | progress file |
+
 - Tools: Colima 0.10.3, Lima 2.3.0, Apple Virtualization (VZ); VM owned by `checkrunner`, 4 CPU, 8 GiB, no shared folders (DOC, progress file, C8 block).
 - The lock has four parts (DOC, progress file "How the C8 lock works"):
   1. pf anchor `com.apple/lui3-vm`, loaded at boot by `lu.spacedog.lui3.pf-vm`: checkrunner sends no TCP or UDP except to its VM's ssh port 41022 on loopback; outgoing pings are dropped Mac-wide (decision R1; written #135, refined #136, loaded #137).

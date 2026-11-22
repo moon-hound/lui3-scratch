@@ -34,6 +34,17 @@ flowchart LR
 - replaced_by [[page]]
 
 ## Technical facts
+### Exact details (for agents)
+| What | Value | Source |
+|---|---|---|
+| Runs on | machine and address | |
+| Accounts | which account runs or owns it | |
+| Files and folders | exact installed paths | |
+| Logs | exact log paths | |
+| Versions | exact versions | |
+| Health check | exact check, where to run it, what a good result looks like, its label | |
+| Start / stop / undo | exact commands, each with its STOP label | |
+
 - Fact (DOC, log #NNN).
 
 ## History (not current instructions)

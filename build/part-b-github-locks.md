@@ -45,6 +45,16 @@ flowchart LR
 - related [[c7-locked-paths]]
 
 ## Technical facts
+### Exact details (for agents)
+| What | Value | Source |
+|---|---|---|
+| Runs on | GitHub, repos `moon-hound/lui3` (real) and `moon-hound/lui3-scratch` (drills); both private, plan GitHub Pro | Part A check O1, #47 |
+| Accounts | owner `moon-hound` (Jax); agent `spacedog-lu` (collaborator; its token: scope `repo`, has an expiry, reaches 2 repos, no `workflow` scope) | #51, #56 |
+| Rule on `main` | classic branch protection rule, id 86016372: pull request required, 1 approval, stale approvals dismissed, code owner review, required check `gate` from GitHub Actions only, no direct push | #47, #48, click steps Screen 3 |
+| Required check | job `gate` (in `ci.yml` on `lui3`; workflow display name NOT CHECKED) | #47, progress file |
+| Health check | `drills/run-part-b-drills.sh` and `drills/run-part-b-attacker-drills.sh` (Jax runs them; they need the agent's token: a planned step) | Part B check |
+| Undo | change the rule back on **Settings > Branches** (Jax, by hand) | click steps |
+
 - Locks proven, each by a drill that was refused (DOC, Jax's pasted output):
   - a fake `gate` result is ignored, because the check's source is pinned to GitHub Actions (B1, log #56);
   - no direct push to `main` (B2, error GH006, #56);

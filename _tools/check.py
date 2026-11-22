@@ -69,6 +69,8 @@ def main():
             problems.append(f'{rel}: status "{fm.get("status")}" is not one of {sorted(STATUSES)}')
         if fm.get('status') == 'verified' and (fm.get('verified_on') in (None, '', 'null') or fm.get('verified_by') in (None, '', 'null')):
             problems.append(f'{rel}: marked verified but verified_on or verified_by is empty')
+        if fm.get('layer') in ('build', 'component') and '### Exact details (for agents)' not in text:
+            problems.append(f'{rel}: build or component page has no "### Exact details (for agents)" table')
         for c in as_list(fm.get('covers')):
             if not (root / c).exists():
                 problems.append(f'{rel}: covers "{c}", which does not exist')
