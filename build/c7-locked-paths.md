@@ -50,7 +50,7 @@ The [[builder]] account writes code on the Mac Studio, but some files must be of
 - [[snapshot]] before the run: `2026-11-19-175145`. Undo: `c7/uninstall.sh` (deleting class: STOP).
 
 ## History (not current instructions)
-- The red run showed the builder could plant links to root-owned files inside its writable folder (#113); that finding produced the standing rule above.
+- The C7 run (#113) showed the builder could plant links to root-owned files inside its writable folder (#113); that finding produced the standing rule above.
 
 ## Not verified
 - Whether the builder can add a *new* ACL right to a root-owned file in a granted folder (expected no; a later drill, C13).

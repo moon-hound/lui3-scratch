@@ -16,18 +16,20 @@ sources: [lui3-part-c-c8-test-vm-2026-11-20.md, lui3-stage-0-progress.md, stage0
 The builder's code has to be tested somewhere it can do no harm. C8 built a small Linux computer that lives inside the Mac Studio, a [[test-vm]] (run by the [[colima-lima]] tools), owned by the [[checkrunner]] account. It can reach nothing outside itself: no internet, no home network, not even the Mac's own services. A [[pf]] firewall rule enforces that, and a [[watchdog]] stops the VM within seconds if the lock is ever missing. It starts by itself when the Studio boots, with no one signed in to the checkrunner account (no screen sign-in needed; log #147).
 
 ## Picture
-```
- Mac Studio
- +---------------------------------------------------------+
- |  checkrunner account                                     |
- |    Colima / Lima  --->  test VM (Linux, 4 CPU, 8 GiB)    |
- |         |                    |                           |
- |   pf rule: checkrunner may only talk to the VM's        |
- |   ssh port 41022; everything else is dropped             |
- |         |                                                |
- |   watchdog (every 5 s): lock in force?  no -> stop VM    |
- +---------------------------------------------------------+
-            x  internet      x  home network      x  Mac services
+```mermaid
+flowchart LR
+  subgraph Studio["Mac Studio"]
+    CR["checkrunner account"] --> VM["Test VM<br/>Linux, 4 CPU, 8 GiB"]
+    PF{{"Firewall rule (pf)<br/>checkrunner may only reach<br/>the VM's own port 41022"}}
+    WD["Watchdog<br/>checks every 5 seconds"]
+    PF -. guards .-> VM
+    WD -- "lock missing?" --> STOP["Stops the VM"]
+  end
+  VM -. "blocked" .-> NET["Internet"]
+  VM -. "blocked" .-> HOME["Home network"]
+  VM -. "blocked" .-> MAC["The Mac's own services"]
+  classDef blocked fill:#fde2e2,stroke:#c0392b,color:#7b241c
+  class NET,HOME,MAC blocked
 ```
 
 ## If this breaks

@@ -20,6 +20,7 @@ Append only. One line per change: date, page, what changed, why (command-log row
 | 2026-11-22 | [[part-b-github-locks]], [[c7-locked-paths]], [[c8-test-vm]], [[test-vm-will-not-start]], glossary pages | Trial pages written (draft) | log #174 |
 | 2026-11-22 | [[part-b-github-locks]], [[c7-locked-paths]], [[c8-test-vm]], [[test-vm-will-not-start]], [[README]], glossary | 24 reviewer fixes; troubleshooting rebuilt from the watchdog's real messages; 4 new glossary words | log #175 |
 | 2026-11-22 | all pages | Page details moved into a hidden comment so viewers show the title, not the details | log #176 |
+| 2026-11-22 | [[c7-locked-paths]], [[test-vm-will-not-start]], [[c8-test-vm]] | Second review fixes; C8 picture redrawn as a Mermaid diagram (sample) | log #177 |
 
 ## How it connects
 - part_of [[index]]
