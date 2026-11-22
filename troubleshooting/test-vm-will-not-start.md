@@ -16,21 +16,16 @@ sources: [c8/vm-boot.sh, stage0-command-log.md#136, stage0-command-log.md#141-#1
 The [[test-vm]] is started and watched by a [[watchdog]]. When the VM is not running, the watchdog almost always wrote down why, and the reason is usually a safety check doing its job. Read the logs first and change nothing until you know which case you are in.
 
 ## Picture
-```
- VM not running
-     |
-     v
- read /var/log/lui3-vm.log        (the watchdog's own log; reads only)
-     |
-     +-- "the VM lock is not in force" or
-     |   "the lock is still not in force"              -> case 1
-     +-- "network helper ... without GODEBUG"         -> case 2
-     +-- "vmnet interface on the Mac"                 -> case 3
-     +-- "... differ from the ones pinned at install" -> case 4
-     +-- "the start took longer than 600 s"           -> case 5: also read
-     |                                                   /var/log/lui3-vm-tools.log
-     +-- any other "NOT STARTED" or "FAIL" line       -> case 7
-     `-- no new line at all                           -> case 6
+```mermaid
+flowchart TD
+  S["Test VM not running"] --> R["Read /var/log/lui3-vm.log<br/>(reads only)"]
+  R --> C1["'lock is not in force'<br/>→ case 1"]
+  R --> C2["'network helper ... without GODEBUG'<br/>→ case 2"]
+  R --> C3["'vmnet interface on the Mac'<br/>→ case 3"]
+  R --> C4["'... differ from the ones pinned'<br/>→ case 4"]
+  R --> C5["'start took longer than 600 s'<br/>→ case 5: also read lui3-vm-tools.log"]
+  R --> C7["any other NOT STARTED or FAIL<br/>→ case 7"]
+  R --> C6["no new line at all<br/>→ case 6"]
 ```
 
 ## If this breaks

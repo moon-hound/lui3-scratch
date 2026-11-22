@@ -16,19 +16,19 @@ sources: [stage-0/lui3-guide-book-design-2026-11-22.md, research/lui3-guide-book
 This is the manual for Lui3: what each piece is, why it exists, how it was built, and what to do when it breaks. It is written while we build, so it grows with every step and stays the current truth after the build is finished (record row 12.3). Start at [[index]], the map of every page.
 
 ## Picture
-```
- index (the map)
-   |-- build/            one page per finished step: what changed, how to redo or undo it
-   |-- components/       how each piece works now (later)
-   |-- troubleshooting/  symptom -> first safe step -> pages to read
-   |-- glossary/         one short page per word
-   |-- why/              one page per decision (later)
-   `-- log               every change to this guide, newest last
+```mermaid
+flowchart TD
+  IDX["index<br/>(the map)"] --> B["build/<br/>one page per finished step"]
+  IDX --> C["components/<br/>how each piece works now (later)"]
+  IDX --> T["troubleshooting/<br/>symptom → first safe step"]
+  IDX --> G["glossary/<br/>one short page per word"]
+  IDX --> W["why/<br/>one page per decision (later)"]
+  IDX --> L["log<br/>every change to this guide"]
 ```
 
 ## How every page is built
 1. **In plain words**: a few sentences, no jargon. Every new word links to the [[glossary]] list.
-2. **Picture**: a small diagram drawn with plain characters.
+2. **Picture**: a small diagram written in Mermaid (a few lines of text that viewers draw as boxes and arrows; GitHub, Obsidian and the planned guide viewer draw it, VS Code needs the "Markdown Preview Mermaid Support" add-on).
 3. **If this breaks**: what you would notice, the first safe step, which page to read next.
 4. **How it connects**: one line per link, with the relation named, for example `- depends_on [[c8-test-vm]]`.
 5. **Technical facts**: versions, paths, exact files and command-log rows. Every claim carries a label: DOC (seen in output or official docs), MINE (our reading), 3RD (someone else's report), NOT CHECKED.

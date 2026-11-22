@@ -16,18 +16,20 @@ sources: [lui3-part-c-c7-locked-paths-2026-11-19.md, lui3-stage-0-progress.md, s
 The [[builder]] account writes code on the Mac Studio, but some files must be off-limits to it: the rules it follows, the tests that judge its work, and the scripts that check it. C7 makes every workspace owned by the administrator (root) and gives the builder write access only to the folders its current job needs, using [[acl]] permissions. Anything not handed out is locked by default. The test: on a stand-in workspace, the builder tried to change 15 locked files and 13 locked folders in every way the drills tried, and every try failed (log #113). One low-level Git route around the lock is known and accepted (record row 17.7).
 
 ## Picture
-```
- /Library/Lui3/work/<workspace>     owned by root
-   |-- src/        builder may write here (granted by its profile)
-   |-- .git/       builder may write here too (needed to commit;
-   |                this is what the accepted Git route relies on)
-   |-- tests/      locked: builder can read, not change
-   |-- ci/         locked
-   |-- CLAUDE.md   locked
-   `-- ...         locked unless the profile grants it
-
- lock script  /Library/Lui3/bin/lui3-lock-workspace  (root only)
-   reads a profile -> grants exactly those folders -> nothing else
+```mermaid
+flowchart TD
+  LS["Lock script<br/>(root only)"] -- "reads the job's profile,<br/>grants only those folders" --> WS
+  subgraph WS["Workspace /Library/Lui3/work/... (owned by root)"]
+    SRC["src/<br/>builder may write"]
+    GIT[".git/<br/>builder may write<br/>(needed to commit)"]
+    TESTS["tests/<br/>locked"]
+    CI["ci/<br/>locked"]
+    RULES["CLAUDE.md and rules<br/>locked"]
+  end
+  classDef open fill:#e3f4e1,stroke:#2e7d32,color:#1b5e20
+  classDef locked fill:#fde2e2,stroke:#c0392b,color:#7b241c
+  class SRC,GIT open
+  class TESTS,CI,RULES locked
 ```
 
 ## If this breaks

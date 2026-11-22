@@ -16,8 +16,9 @@ sources: [stage0-command-log.md#NNN, path/to/paper.md]
 Three to five sentences, no jargon. Link every new word to the glossary: [[glossary-word]].
 
 ## Picture
-```
-small diagram in plain characters
+```mermaid
+flowchart LR
+  A["Thing one"] -- "what happens" --> B["Thing two"]
 ```
 
 ## If this breaks

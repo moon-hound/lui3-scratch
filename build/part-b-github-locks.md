@@ -16,19 +16,21 @@ sources: [lui3-stage-0-part-b-check-2026-11-17.md, lui3-part-b-research-2026-11-
 The AI agent writes code and sends it to GitHub, but it must never be able to put code into the real project on its own. Part B set GitHub's own locks so that the only way code reaches the protected [[main-branch]] is a [[pull-request]] that passes the automatic check (`gate`) **and** gets Jax's approval. Every lock was tested by trying to break it, first with scripts and then by a helper whose only job was to find a way around. Every lock held. One advisory check (the size budget for pull requests) can be skipped by the agent; that was accepted for Stage 0 (log #57). Jax signed Part B off on 2026-11-17.
 
 ## Picture
-```
- agent account (spacedog-lu)          Jax (moon-hound, owner)
-        |                                     |
-   pushes a branch, opens a PR                |
-        v                                     |
-   +-------------- GitHub --------------------+------+
-   |  gate check (GitHub Actions only)  --> must pass |
-   |  code owner review (Jax)           --> must approve
-   |  new push after approval           --> approval dropped
-   |  direct push to main               --> refused   |
-   +--------------------------------------------------+
-        v
-      main  (only reachable through all of the above)
+```mermaid
+flowchart LR
+  A["Agent account<br/>spacedog-lu"] -- "pushes a branch,<br/>opens a pull request" --> PR["Pull request"]
+  A -. "direct push" .-> X1["Refused"]
+  PR --> G{"gate check passes?<br/>(GitHub Actions only)"}
+  G -- no --> X2["Blocked"]
+  G -- yes --> R{"Jax approves?<br/>(code owner)"}
+  R -- no --> X3["Blocked"]
+  R -- yes --> N{"New push after<br/>approval?"}
+  N -- yes --> X4["Approval dropped"]
+  N -- no --> M["main"]
+  classDef stop fill:#fde2e2,stroke:#c0392b,color:#7b241c
+  classDef ok fill:#e3f4e1,stroke:#2e7d32,color:#1b5e20
+  class X1,X2,X3,X4 stop
+  class M ok
 ```
 
 ## If this breaks
