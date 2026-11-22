@@ -8,6 +8,8 @@ import sys
 
 REQUIRED = ['id', 'title', 'layer', 'type', 'status', 'covers', 'verified_on', 'verified_by', 'sources']
 STATUSES = {'draft', 'verified', 'stale'}
+CONTENT_LAYERS = ('build', 'component', 'troubleshooting', 'glossary', 'why')
+AGENT_SECTION = 'For agents: technical details'
 SECRETS = [r'ghp_[A-Za-z0-9]{20,}', r'github_pat_[A-Za-z0-9_]{20,}', r'-----BEGIN [A-Z ]*PRIVATE KEY-----',
            r'\bsk-[A-Za-z0-9]{20,}', r'xox[abp]-[A-Za-z0-9-]{10,}', r'AKIA[0-9A-Z]{16}']
 LINK = re.compile(r'\[\[([^\]|#]+)(?:[#|][^\]]*)?\]\]')
@@ -69,8 +71,14 @@ def main():
             problems.append(f'{rel}: status "{fm.get("status")}" is not one of {sorted(STATUSES)}')
         if fm.get('status') == 'verified' and (fm.get('verified_on') in (None, '', 'null') or fm.get('verified_by') in (None, '', 'null')):
             problems.append(f'{rel}: marked verified but verified_on or verified_by is empty')
-        if fm.get('layer') in ('build', 'component') and '### Exact details (for agents)' not in text:
-            problems.append(f'{rel}: build or component page has no "### Exact details (for agents)" table')
+        if fm.get('layer') in CONTENT_LAYERS and pid != 'glossary':
+            h2 = re.findall(r'^## (.+)$', text, re.M)
+            if not h2 or h2[-1] != AGENT_SECTION:
+                problems.append(f'{rel}: last section is not "## {AGENT_SECTION}"')
+            else:
+                h3 = re.findall(r'^### (.+)$', text.split('## ' + AGENT_SECTION, 1)[1], re.M)
+                if not h3 or h3[0] != 'Exact details (for agents)':
+                    problems.append(f'{rel}: "## {AGENT_SECTION}" does not start with "### Exact details (for agents)"')
         for c in as_list(fm.get('covers')):
             if not (root / c).exists():
                 problems.append(f'{rel}: covers "{c}", which does not exist')

@@ -18,3 +18,12 @@ The official version of the project's code on GitHub. Nothing reaches it except 
 ## How it connects
 - used_in [[part-b-github-locks]]
 - part_of [[glossary]]
+
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
+### Exact details (for agents)
+| What | Value | Source |
+|---|---|---|
+| Repo | `moon-hound/lui3` (private) | Part A check O1 |
+| Protection | classic branch protection rule id 86016372 | log #47 |

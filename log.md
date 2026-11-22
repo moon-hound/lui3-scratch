@@ -25,6 +25,7 @@ Append only. One line per change: date, page, what changed, why (command-log row
 | 2026-11-22 | [[c8-test-vm]], [[c7-locked-paths]], [[part-b-github-locks]], template | "Exact details (for agents)" table added; checker now requires it on build pages | log #179 |
 | 2026-11-22 | [[c8-test-vm]], [[c7-locked-paths]], [[part-b-github-locks]] | Fact-check fixes to the agent tables (missing paths, logs, fingerprints, token expiry) | log #180 |
 | 2026-11-22 | [[c7-locked-paths]], [[c8-test-vm]], [[part-b-github-locks]], [[test-vm-will-not-start]], [[README]], template | All technical parts grouped in one last section "For agents: technical details" | log #182 |
+| 2026-11-22 | all content pages, [[README]] | Same last section with the table first on every content page (glossary and troubleshooting added); checker enforces the position | log #183 |
 
 ## How it connects
 - part_of [[index]]

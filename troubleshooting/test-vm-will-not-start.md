@@ -52,6 +52,16 @@ flowchart TD
 ## For agents: technical details
 *Everything from here down is for agents and for checking facts. You can stop reading here.*
 
+### Exact details (for agents)
+| What | Value | Source |
+|---|---|---|
+| Runs on | Mac Studio `lui-mac.local` (192.168.1.101), as `lui` | log #1 to #3, `CLAUDE.md` |
+| Logs | watchdog `/var/log/lui3-vm.log`; Colima and tools `/var/log/lui3-vm-tools.log`; firewall job `/var/log/lui3-pf-vm.log` | `c8/vm-boot.sh`, `c8/common.sh` |
+| Read a log | `sudo tail -n 40 <log>` (STOP: `sudo`; reads only) | |
+| Health check | from `~/lui3-stage0/c8`: `sudo sh check.sh` (green only; STOP: `sudo`) | #146 |
+| Restart after the fix | `sudo launchctl kickstart -k system/lu.spacedog.lui3.vm` (STOP: `sudo`, launchd) | `c8/vm-boot.sh` |
+| Never | `colima start` by hand; Lima as root; `check.sh red` outside a planned drill | progress file, #136 |
+
 ### Technical facts
 - The watchdog log is `/var/log/lui3-vm.log`; Colima's output and tool errors go to `/var/log/lui3-vm-tools.log`, never into the watchdog log (DOC, `c8/vm-boot.sh` header).
 - Case 4 happened on 2026-11-21: Colima rewrites `colima.yaml` at every start, so it is now pinned by its values, not its fingerprint (DOC, log #141, #142, #145).

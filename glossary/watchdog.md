@@ -19,3 +19,13 @@ A small program the Mac starts by itself at boot. It starts the test VM only whe
 - used_in [[c8-test-vm]]
 - used_in [[test-vm-will-not-start]]
 - part_of [[glossary]]
+
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
+### Exact details (for agents)
+| What | Value | Source |
+|---|---|---|
+| Startup job | `lu.spacedog.lui3.vm` (launchd, runs as root) | `c8/lu.spacedog.lui3.vm.plist` |
+| Script | `/Library/Lui3/c8/vm-boot.sh`; checks every 5 s | log #139 |
+| Log | `/var/log/lui3-vm.log` | `c8/vm-boot.sh` |
