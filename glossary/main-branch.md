@@ -5,6 +5,7 @@ layer: glossary
 type: reference
 status: draft
 covers: []
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [lui3-stage-0-part-b-check-2026-11-17.md]

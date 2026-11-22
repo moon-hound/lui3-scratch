@@ -5,6 +5,7 @@ layer: glossary
 type: reference
 status: draft
 covers: []
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [CLAUDE.md rule 7]

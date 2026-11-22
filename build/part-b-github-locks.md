@@ -5,6 +5,7 @@ layer: build
 type: explanation
 status: draft
 covers: [lui3-stage-0-part-b-check-2026-11-17.md, lui3-part-b-click-steps-2026-11-17.md, drills/run-part-b-drills.sh, drills/run-part-b-attacker-drills.sh]
+covers_hash: 6c61e628c7d11d4a
 verified_on: null
 verified_by: null
 sources: [lui3-stage-0-part-b-check-2026-11-17.md, lui3-part-b-research-2026-11-17.md, stage0-command-log.md#43-#60]

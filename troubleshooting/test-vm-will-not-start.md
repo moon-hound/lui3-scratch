@@ -5,6 +5,7 @@ layer: troubleshooting
 type: how-to
 status: draft
 covers: [c8/vm-boot.sh, c8/boot-install.sh, c8/boot-uninstall.sh, c8/check.sh]
+covers_hash: f3a6cf1e2c9efc41
 verified_on: null
 verified_by: null
 sources: [c8/vm-boot.sh, stage0-command-log.md#136, stage0-command-log.md#141-#147, lui3-stage-0-progress.md]
@@ -57,7 +58,7 @@ flowchart TD
 |---|---|---|
 | Runs on | Mac Studio `lui-mac.local` (192.168.1.101), as `lui` | log #1 to #3, `CLAUDE.md` |
 | Logs | watchdog `/var/log/lui3-vm.log`; Colima and tools `/var/log/lui3-vm-tools.log`; firewall job `/var/log/lui3-pf-vm.log` | `c8/vm-boot.sh`, `c8/common.sh` |
-| Read a log | `sudo tail -n 40 <log>` (STOP: `sudo`; reads only) | |
+| Read a log | `sudo tail -n 40 <log>` (STOP: `sudo`; reads only) | `c8/vm-boot.sh` (log paths), `CLAUDE.md` rule 15 (STOP for `sudo`) |
 | Health check | from `~/lui3-stage0/c8`: `sudo sh check.sh` (green only; STOP: `sudo`) | #146 |
 | Restart after the fix | `sudo launchctl kickstart -k system/lu.spacedog.lui3.vm` (STOP: `sudo`, launchd) | `c8/vm-boot.sh` |
 | Never | `colima start` by hand; Lima as root; `check.sh red` outside a planned drill | progress file, #136 |

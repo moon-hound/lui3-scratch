@@ -5,6 +5,7 @@ layer: build | component | troubleshooting | glossary | why | meta
 type: explanation | reference | how-to | tutorial
 status: draft
 covers: [path/to/the/file/it/describes]
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#NNN, path/to/paper.md]

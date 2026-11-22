@@ -5,6 +5,7 @@ layer: meta
 type: reference
 status: draft
 covers: []
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [stage-0/lui3-guide-book-design-2026-11-22.md]

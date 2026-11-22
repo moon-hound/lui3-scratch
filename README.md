@@ -5,6 +5,7 @@ layer: meta
 type: explanation
 status: draft
 covers: []
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [stage-0/lui3-guide-book-design-2026-11-22.md, research/lui3-guide-book-research-2026-11-22.md]
@@ -49,6 +50,7 @@ flowchart TD
 - The raw sources (the command log, research papers, scripts) are never edited from here; pages link to them.
 
 ## Rules for whoever writes pages
+- **The full writing rules are in `guide/AGENTS.md`** (one file, read by every writer and tool; the checker enforces them). The points below are a summary.
 - Facts live once. Link to the page that holds a fact instead of copying it.
 - Every change to a page gets one line in [[log]].
 - Run the checker before saving: `python3 guide/_tools/check.py` (from `~/projects/lui3-main`).

@@ -5,6 +5,7 @@ layer: build
 type: explanation
 status: draft
 covers: [c8/common.sh, c8/lui3-vm.pf, c8/lu.spacedog.lui3.pf-vm.plist, c8/override.yaml, c8/setup.sh, c8/vm-boot.sh, c8/lu.spacedog.lui3.vm.plist, c8/check.sh, c8/boot-drills.sh, lui3-part-c-c8-test-vm-2026-11-20.md]
+covers_hash: d775d7086766ea2f
 verified_on: null
 verified_by: null
 sources: [lui3-part-c-c8-test-vm-2026-11-20.md, lui3-stage-0-progress.md, stage0-command-log.md#115-#147]
