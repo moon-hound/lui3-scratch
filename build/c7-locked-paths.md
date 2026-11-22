@@ -43,7 +43,9 @@ flowchart TD
 - related [[part-b-github-locks]]
 - related [[c8-test-vm]]
 
-## Technical facts
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
 ### Exact details (for agents)
 | What | Value | Source |
 |---|---|---|
@@ -56,6 +58,8 @@ flowchart TD
 | Health check | on the Studio as `lui`, from `~/lui3-stage0/c7`: `sudo sh check.sh` (green; good = 0 FAIL, last 81/0). STOP label: `sudo`. Never `red` outside a planned drill | #113 |
 | Undo | on the Studio: `sudo sh ~/lui3-stage0/c7/uninstall.sh` (STOP: `sudo`, deleting) | progress file |
 
+### Technical facts
+
 - Workspaces are root-owned under `/Library/Lui3/work`; the builder writes only in its profile's folders (in the drill profile: `src/` and `.git/`) through ACLs, so every locked path of record row 17.2 is locked by default (DOC, log #112, #113).
 - Lock script `/Library/Lui3/bin/lui3-lock-workspace` and `profiles/drill.txt` are root-owned; install record `/var/db/lui3-c7-installed.txt` (DOC, #113).
 - Drills on the stand-in: 15 locked files and 13 locked folders could not be written, touched, re-permissioned, given a new ACL or flag, renamed, deleted or added to; the builder's own work and Git commits still worked. Red run 75 pass / 6 fail, then green 81 / 0 (DOC, #112, #113).
@@ -63,9 +67,9 @@ flowchart TD
 - Rule from C7.1b: nothing privileged reads from `/Users/Shared` or `/tmp` (MINE, from the shared-places check, #113).
 - [[snapshot]] before the run: `2026-11-19-175145`. Undo: `c7/uninstall.sh` (deleting class: STOP).
 
-## History (not current instructions)
+### History (not current instructions)
 - The C7 run (#113) showed the builder could plant links to root-owned files inside its writable folder (#113); that finding produced the standing rule above.
 
-## Not verified
+### Not verified
 - Whether the builder can add a *new* ACL right to a root-owned file in a granted folder (expected no; a later drill, C13).
 - The real profiles (interview, test writer, build, proof writer) are written in C10.

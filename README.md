@@ -31,9 +31,11 @@ flowchart TD
 2. **Picture**: a small diagram written in Mermaid (a few lines of text that viewers draw as boxes and arrows; GitHub, Obsidian and the planned guide viewer draw it, VS Code needs the "Markdown Preview Mermaid Support" add-on).
 3. **If this breaks**: what you would notice, the first safe step, which page to read next.
 4. **How it connects**: one line per link, with the relation named, for example `- depends_on [[c8-test-vm]]`.
-5. **Technical facts**: versions, paths, exact files and command-log rows. Every claim carries a label: DOC (seen in output or official docs), MINE (our reading), 3RD (someone else's report), NOT CHECKED.
-6. **History**: what we tried and why it failed. Not current instructions.
-7. **Not verified**: what nobody has checked yet.
+5. **For agents: technical details** (always the last section; you can stop reading before it):
+   - **Exact details (for agents)**: one table with the machine, accounts, files, logs, versions, health check, start, stop and undo, each with its source.
+   - **Technical facts**: everything else, every claim labelled DOC (seen in output or official docs), MINE (our reading), 3RD (someone else's report) or NOT CHECKED.
+   - **History**: what we tried and why it failed. Not current instructions.
+   - **Not verified**: what nobody has checked yet.
 
 ## Page status
 - `draft`: written, not yet checked.

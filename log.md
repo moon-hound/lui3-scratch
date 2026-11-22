@@ -24,6 +24,7 @@ Append only. One line per change: date, page, what changed, why (command-log row
 | 2026-11-22 | [[README]], [[part-b-github-locks]], [[c7-locked-paths]], [[test-vm-will-not-start]], template | All pictures redrawn as Mermaid diagrams (Jax: "looks good" on the C8 sample) | log #178 |
 | 2026-11-22 | [[c8-test-vm]], [[c7-locked-paths]], [[part-b-github-locks]], template | "Exact details (for agents)" table added; checker now requires it on build pages | log #179 |
 | 2026-11-22 | [[c8-test-vm]], [[c7-locked-paths]], [[part-b-github-locks]] | Fact-check fixes to the agent tables (missing paths, logs, fingerprints, token expiry) | log #180 |
+| 2026-11-22 | [[c7-locked-paths]], [[c8-test-vm]], [[part-b-github-locks]], [[test-vm-will-not-start]], [[README]], template | All technical parts grouped in one last section "For agents: technical details" | log #182 |
 
 ## How it connects
 - part_of [[index]]

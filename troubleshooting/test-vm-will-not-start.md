@@ -49,15 +49,18 @@ flowchart TD
 - depends_on [[watchdog]]
 - part_of [[index]]
 
-## Technical facts
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
+### Technical facts
 - The watchdog log is `/var/log/lui3-vm.log`; Colima's output and tool errors go to `/var/log/lui3-vm-tools.log`, never into the watchdog log (DOC, `c8/vm-boot.sh` header).
 - Case 4 happened on 2026-11-21: Colima rewrites `colima.yaml` at every start, so it is now pinned by its values, not its fingerprint (DOC, log #141, #142, #145).
 - The cause behind case 5 happened on 2026-11-21 (the 600 s message itself never fired: drill W2 stopped the VM after about 4 minutes, #141): Lima's boot script ran `apt-get update`, which the lock blocks; fixed with `skipDefaultDependencyResolution` (DOC, #144, #145).
 - After any change to `common.sh`, `vm-boot.sh`, `override.yaml` or the startup plist: `boot-uninstall.sh` then `boot-install.sh` (progress file, C8 run order).
 
-## History (not current instructions)
+### History (not current instructions)
 - Cases 4 and 5 were found during the first restarts from the startup job (#141 to #145). The old wording of case 4 was "the VM's settings files differ from the ones pinned at install" (#141); the script now names the file.
 
-## Not verified
+### Not verified
 - Cases 2, 3, 6 and 7 have never happened outside drills; the steps for them are a plan, not a tested routine.
 - Whether reading `/var/log/lui3-vm.log` really needs `sudo` (NOT CHECKED; `sudo` is the safe assumption).

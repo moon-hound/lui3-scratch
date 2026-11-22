@@ -44,7 +44,9 @@ flowchart LR
 - part_of [[index]]
 - related [[c7-locked-paths]]
 
-## Technical facts
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
 ### Exact details (for agents)
 | What | Value | Source |
 |---|---|---|
@@ -54,6 +56,8 @@ flowchart LR
 | Required check | job `gate` (in `ci.yml` on `lui3`; workflow display name NOT CHECKED) | #47, progress file |
 | Health check | `drills/run-part-b-drills.sh` and `drills/run-part-b-attacker-drills.sh`, run by Jax on the laptop with the agent's token (a planned step, no `sudo`). Run in `scratch` mode first; `lui3` mode opens and closes drill pull requests on the real repo | Part B check, #57 |
 | Undo | change the rule back on **Settings > Branches** (Jax, by hand) | click steps |
+
+### Technical facts
 
 - Locks proven, each by a drill that was refused (DOC, Jax's pasted output):
   - a fake `gate` result is ignored, because the check's source is pinned to GitHub Actions (B1, log #56);
@@ -69,7 +73,7 @@ flowchart LR
 - Red then green: before the scratch rule was complete, a direct push got through (#52); the completed rule refused it (#56) (MINE: this is the "weakened copy fails" proof).
 - Rule on `lui3`: classic branch protection rule, id 86016372, read back as saved (#47, #48).
 
-## Accepted exceptions (Part B check, section 4; Jax accepted them at sign-off)
+### Accepted exceptions (Part B check, section 4; Jax accepted them at sign-off)
 1. The locks cannot make a reviewer understand what a pull request really does; the reviewer helpers must flag risky changes in plain words (build phase).
 2. The agent can skip the advisory size budget (#57); build-phase fix planned. Details: Part B check, section 4.
 3. The "require actions pinned to a full commit SHA" box would not stay ticked (#48); the actions are pinned in the files instead.
@@ -78,5 +82,5 @@ flowchart LR
 6. Leftover drill branches and pull requests are removed at the end-of-Stage-0 cleanup.
 7. A second, short-lived agent token was made for the live drills (#60); its deletion is NOT CHECKED.
 
-## History (not current instructions)
+### History (not current instructions)
 - The first scratch rule was incomplete and let a direct push through (#52); fixed before sign-off.

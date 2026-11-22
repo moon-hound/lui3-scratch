@@ -45,7 +45,9 @@ flowchart LR
 - related [[c7-locked-paths]]
 - part_of [[index]]
 
-## Technical facts
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
 ### Exact details (for agents)
 | What | Value | Source |
 |---|---|---|
@@ -62,6 +64,8 @@ flowchart LR
 | Re-install after a change | `boot-uninstall.sh` then `boot-install.sh` (both STOP) | progress file, C8 run order |
 | Undo | `boot-uninstall.sh`, `uninstall.sh`, `pf-uninstall.sh` (all STOP: `sudo`, deleting, launchd, firewall); `pf-uninstall.sh` refuses while the VM is running | progress file, `c8/pf-uninstall.sh` |
 
+### Technical facts
+
 - Tools: Colima 0.10.3, Lima 2.3.0, Apple Virtualization (VZ); VM owned by `checkrunner`, 4 CPU, 8 GiB, no shared folders (DOC, progress file, C8 block).
 - The lock has four parts (DOC, progress file "How the C8 lock works"):
   1. pf anchor `com.apple/lui3-vm`, loaded at boot by `lu.spacedog.lui3.pf-vm`: checkrunner sends no TCP or UDP except to its VM's ssh port 41022 on loopback; outgoing pings are dropped Mac-wide (decision R1; written #135, refined #136, loaded #137).
@@ -71,13 +75,13 @@ flowchart LR
 - Last results (DOC): green 79/0/0, red 64/0 (#146); after a real restart the job started the VM in 16 s and `check.sh boot` passed 83/0/0 (#147); watchdog drills 8/0.
 - Run order and undo: see the progress file, "How the C8 lock works" (facts live once). Undo scripts are deleting class: STOP.
 
-## History (not current instructions)
+### History (not current instructions)
 - v1 got stuck at a second failure on the same step (#118); research (#119) led to v2, a lock by user account (#122, #123).
 - Facts runs found that Lima still forwarded the VM's own [[loopback]] ports and looked up names for it (#125, #127); v3 then switched off forwarding and host name lookups (#128, #129).
 - v4 forced Go's own name resolver so lookups could be blocked (#132 to #134); v5 added the Mac-wide ping block (#135 to #137).
 - Restarts from the startup job hung at "boot scripts" (#141): the cause was Lima running `apt-get update` inside the VM, which the lock blocked, not launchd (#142 to #145). Fixed by skipping Lima's package install (#145); a real reboot then passed (#147).
 
-## Not verified
+### Not verified
 - Whether another account could read the VM's pings to the Mac's own address (loopback left open on purpose).
 - Whether the 8 GiB VM fits next to the local model (record row 16.1 test 3).
 - A sandbox around the VM start (R1 part 2) is a later trial.

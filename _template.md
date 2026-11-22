@@ -33,7 +33,9 @@ flowchart LR
 - why [[page]]
 - replaced_by [[page]]
 
-## Technical facts
+## For agents: technical details
+*Everything from here down is for agents and for checking facts. You can stop reading here.*
+
 ### Exact details (for agents)
 | What | Value | Source |
 |---|---|---|
@@ -45,10 +47,12 @@ flowchart LR
 | Health check | exact check, where to run it, what a good result looks like, its label | |
 | Start / stop / undo | exact commands, each with its STOP label | |
 
+### Technical facts
+
 - Fact (DOC, log #NNN).
 
-## History (not current instructions)
+### History (not current instructions)
 - What we tried, what happened, why we changed it (log #NNN).
 
-## Not verified
+### Not verified
 - What nobody has checked yet.
