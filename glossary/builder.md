@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: builder
 title: "builder account"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#88, stage0-command-log.md#93, stage0-command-log.md#113]
----
+-->
 
 # builder account
 

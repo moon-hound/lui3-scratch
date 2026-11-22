@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: part-b-github-locks
 title: "Part B: GitHub locks against the agent"
 layer: build
@@ -8,7 +8,7 @@ covers: [lui3-stage-0-part-b-check-2026-11-17.md, lui3-part-b-click-steps-2026-1
 verified_on: null
 verified_by: null
 sources: [lui3-stage-0-part-b-check-2026-11-17.md, lui3-part-b-research-2026-11-17.md, stage0-command-log.md#43-#60]
----
+-->
 
 # Part B: GitHub locks against the agent
 

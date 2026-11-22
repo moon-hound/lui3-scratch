@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: glossary
 title: Glossary
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: []
----
+-->
 
 # Glossary
 

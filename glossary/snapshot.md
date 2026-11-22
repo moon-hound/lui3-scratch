@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: snapshot
 title: "snapshot (APFS snapshot)"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [CLAUDE.md rule 7]
----
+-->
 
 # snapshot (APFS snapshot)
 

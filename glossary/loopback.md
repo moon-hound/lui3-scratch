@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: loopback
 title: "loopback"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#125, stage0-command-log.md#127]
----
+-->
 
 # loopback
 

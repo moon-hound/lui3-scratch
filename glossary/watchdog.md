@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: watchdog
 title: "watchdog (startup job)"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#139-#147, c8/vm-boot.sh]
----
+-->
 
 # watchdog (startup job)
 

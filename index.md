@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: index
 title: Map of the guide
 layer: meta
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage-0/lui3-guide-book-design-2026-11-22.md]
----
+-->
 
 # Map of the guide
 

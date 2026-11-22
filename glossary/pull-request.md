@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: pull-request
 title: "pull request"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [lui3-stage-0-part-b-check-2026-11-17.md]
----
+-->
 
 # pull request
 

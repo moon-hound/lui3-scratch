@@ -13,14 +13,19 @@ SECRETS = [r'ghp_[A-Za-z0-9]{20,}', r'github_pat_[A-Za-z0-9_]{20,}', r'-----BEGI
 LINK = re.compile(r'\[\[([^\]|#]+)(?:[#|][^\]]*)?\]\]')
 
 
+OPEN = '<!-- page details'
+
+
 def front_matter(text):
-    if not text.startswith('---\n'):
+    # Page details sit in a hidden HTML comment at the top, so viewers without front-matter support do not show them.
+    if not text.startswith(OPEN):
         return None
-    end = text.find('\n---\n', 4)
+    start = text.find('\n') + 1
+    end = text.find('\n-->', start)
     if end < 0:
         return None
     fm = {}
-    for line in text[4:end].split('\n'):
+    for line in text[start:end].split('\n'):
         if ':' in line:
             k, v = line.split(':', 1)
             fm[k.strip()] = v.strip()

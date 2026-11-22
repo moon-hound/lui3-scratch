@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: test-vm
 title: "Test VM"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#115-#147]
----
+-->
 
 # Test VM
 

@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: c8-test-vm
 title: "C8: the sealed test VM"
 layer: build
@@ -8,7 +8,7 @@ covers: [c8/common.sh, c8/lui3-vm.pf, c8/lu.spacedog.lui3.pf-vm.plist, c8/overri
 verified_on: null
 verified_by: null
 sources: [lui3-part-c-c8-test-vm-2026-11-20.md, lui3-stage-0-progress.md, stage0-command-log.md#115-#147]
----
+-->
 
 # C8: the sealed test VM
 

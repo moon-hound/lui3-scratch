@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: colima-lima
 title: "Colima and Lima"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#95-#107, c5/versions.env]
----
+-->
 
 # Colima and Lima
 

@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: README
 title: How to read this guide
 layer: meta
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage-0/lui3-guide-book-design-2026-11-22.md, research/lui3-guide-book-research-2026-11-22.md]
----
+-->
 
 # How to read this guide
 

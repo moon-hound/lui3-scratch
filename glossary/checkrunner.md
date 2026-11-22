@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: checkrunner
 title: "checkrunner account"
 layer: glossary
@@ -8,7 +8,7 @@ covers: []
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#88, stage0-command-log.md#120, stage0-command-log.md#122-#147]
----
+-->
 
 # checkrunner account
 

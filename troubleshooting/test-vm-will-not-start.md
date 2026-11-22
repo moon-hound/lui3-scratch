@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: test-vm-will-not-start
 title: The test VM will not start
 layer: troubleshooting
@@ -8,7 +8,7 @@ covers: [c8/vm-boot.sh, c8/boot-install.sh, c8/boot-uninstall.sh, c8/check.sh]
 verified_on: null
 verified_by: null
 sources: [c8/vm-boot.sh, stage0-command-log.md#136, stage0-command-log.md#141-#147, lui3-stage-0-progress.md]
----
+-->
 
 # The test VM will not start
 

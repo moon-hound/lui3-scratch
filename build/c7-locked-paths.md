@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: c7-locked-paths
 title: "C7: locked paths on the Mac Studio"
 layer: build
@@ -8,7 +8,7 @@ covers: [c7/lui3-lock-workspace.sh, c7/profiles/drill.txt, c7/common.sh, c7/inst
 verified_on: null
 verified_by: null
 sources: [lui3-part-c-c7-locked-paths-2026-11-19.md, lui3-stage-0-progress.md, stage0-command-log.md#112, stage0-command-log.md#113]
----
+-->
 
 # C7: locked paths on the Mac Studio
 

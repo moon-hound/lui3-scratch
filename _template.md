@@ -1,4 +1,4 @@
----
+<!-- page details (read by the checker; hidden when reading)
 id: page-id-same-as-file-name
 title: Page title in plain words
 layer: build | component | troubleshooting | glossary | why | meta
@@ -8,7 +8,7 @@ covers: [path/to/the/file/it/describes]
 verified_on: null
 verified_by: null
 sources: [stage0-command-log.md#NNN, path/to/paper.md]
----
+-->
 
 # Page title
 
