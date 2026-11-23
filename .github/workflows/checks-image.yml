@@ -1,0 +1,47 @@
+name: checks-image
+# Builds the test image on main and uploads it as artifact checks-image-<key>. The Studio's lui3-check takes it only
+# from a push or manual run of this file on main of this repo. Actions pinned to commit SHAs (log #162).
+on:
+  push:
+    branches: [main]
+    paths:
+      - ci/checks-image/Dockerfile
+      - requirements-ci.txt
+      - .github/workflows/checks-image.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: checks-image
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: image key (same formula as lui3-check)
+        id: key
+        run: |
+          lb=$(git rev-parse --verify HEAD:requirements-ci.txt)
+          db=$(git rev-parse --verify HEAD:ci/checks-image/Dockerfile)
+          k=$(printf '%s\n%s\n' "$lb" "$db" | sha256sum | cut -c1-16)
+          echo "key=$k" >> "$GITHUB_OUTPUT"
+      - name: build and save the image
+        env:
+          KEY: ${{ steps.key.outputs.key }}
+        run: |
+          docker build --platform linux/arm64 -f ci/checks-image/Dockerfile -t "lui3-checks:$KEY" .
+          [ "$(docker image inspect --format '{{.Architecture}}' "lui3-checks:$KEY")" = arm64 ] || { echo "not arm64"; exit 1; }
+          docker save "lui3-checks:$KEY" -o image.tar
+          ls -l image.tar
+          sha256sum image.tar
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: checks-image-${{ steps.key.outputs.key }}
+          path: image.tar
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: error

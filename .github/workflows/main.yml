@@ -8,9 +8,10 @@ permissions:
   contents: read
 jobs:
   gate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
     steps:
-      - name: gate
+      - name: gate drill
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
@@ -18,3 +19,12 @@ jobs:
             *FAILGATE*) echo "drill: gate fails on purpose"; exit 1 ;;
           esac
           echo "gate ok"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: checks (ci/checks.sh in the test image, no network, like the Studio's lui3-check)
+        run: |
+          docker build -q -f ci/checks-image/Dockerfile -t lui3-checks:ci .
+          docker run --rm --network none --read-only --user 65534:65534 --cap-drop ALL \
+            --security-opt no-new-privileges --tmpfs /tmp:rw,exec,nosuid,size=512m \
+            -e HOME=/tmp -e CI=true -v "$PWD:/src:ro" -w /src lui3-checks:ci sh ci/checks.sh

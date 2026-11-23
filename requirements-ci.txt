@@ -1,0 +1,1 @@
+# Lockfile for the test image. Empty on purpose: the checks use only Python's standard library.
