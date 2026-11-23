@@ -4,8 +4,8 @@ title: "C7: locked paths on the Mac Studio"
 layer: build
 type: explanation
 status: draft
-covers: [c7/lui3-lock-workspace.sh, c7/profiles/drill.txt, c7/common.sh, c7/install.sh, c7/check.sh, c7/uninstall.sh, lui3-part-c-c7-locked-paths-2026-11-19.md]
-covers_hash: 7f3fd8a628b3f7d5
+covers: []
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [lui3-part-c-c7-locked-paths-2026-11-19.md, lui3-stage-0-progress.md, stage0-command-log.md#112, stage0-command-log.md#113]

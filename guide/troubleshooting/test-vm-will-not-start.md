@@ -4,8 +4,8 @@ title: The test VM will not start
 layer: troubleshooting
 type: how-to
 status: draft
-covers: [c8/vm-boot.sh, c8/boot-install.sh, c8/boot-uninstall.sh, c8/check.sh]
-covers_hash: f3a6cf1e2c9efc41
+covers: []
+covers_hash: null
 verified_on: null
 verified_by: null
 sources: [c8/vm-boot.sh, stage0-command-log.md#136, stage0-command-log.md#141-#147, lui3-stage-0-progress.md]
